@@ -6,7 +6,8 @@ import java.io.IOException;
 
 public class Reader {
 	{
-
+				/* Original code for UserService parseText() on how to read the data.txt file 
+				   which I was told was wrong by other students who wrote the now present code in UserService */
 		try {
 			FileReader file = new FileReader("data.txt");
 			BufferedReader buff = new BufferedReader(file);
