@@ -16,7 +16,6 @@ public class UserService {
 		return user;
 	}
 
-	String input1 = "exampleEmail,examplePassword,exampleName"; // Not sure what this was for anymore. Doesn't seem to be used
 	
 	public List<User> parseText() { // Creating a String array
 		BufferedReader buff = null; // Not sure why they wanted to move this up here or change it to null
