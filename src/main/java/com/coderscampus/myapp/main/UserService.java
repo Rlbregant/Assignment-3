@@ -18,28 +18,31 @@ public class UserService {
 
 	String input1 = "exampleEmail,examplePassword,exampleName"; // Not sure what this was for anymore. Doesn't seem to be used
 	
-	public String[] parseText() { // Creating a String array
+	public List<User> parseText() { // Creating a String array
 		BufferedReader buff = null; // Not sure why they wanted to move this up here or change it to null
-		List<String> listOfStrings = new ArrayList<String>();	// Instantiating an Arraylist of type String
+		List<User> listOfUser = new ArrayList<>();	// Instantiating an Arraylist of type String
 		try { // Try block which comes before a catch block for possible errors
 			buff = new BufferedReader(new FileReader("data.txt")); // Instantiating BufferedReader with Filereader instead of using two lines pointing to the data.txt file to parse
-			User user = new User(); // The idea I get. Not sure I grasp creating unique users without changing the variable name
+			 // The idea I get. Not sure I grasp creating unique users without changing the variable name
 			
 			while (buff != null) { // a while loop that stops when BufferedReader hits an empty line.
 				
 				String line = buff.readLine();	// Reads a line of text and saves it as variable line
-				listOfStrings.add(line);		// Puts line in ArrayList called listOfStrings
-				String[] array = line.split(",");	// Spliting the line by the commas to give 0 - 2 Array slots
+//				listOfStrings.add(line);		// Puts line in ArrayList called listOfStrings
+				String[] array = line.split(",");	// Splitting the line by the commas to give 0 - 2 Array slots
 				String userEmail = (array[0]) ;	// Assigning ListOfStrings [0] as userEmail
 				String userPassword = (array[1]); // Assigning ListOfStrings [1] as userPassword
 				String userName = (array[2]);	// Assigning ListOfStrings [2] as userName
+				User user = new User(userEmail, userPassword, userName);
+				listOfUser.add(user);
 //				System.out.println(array[0]);		// More
 //				System.out.println(userPassword);
 //				System.out.println(userName);
 //				System.out.println(line);			// Tests
-				user.setuserEmail(userEmail);	// Calling the setter to assign String userEmail to user
-				user.setuserPassword(userPassword);	// Calling the setter to assign String userPassword to user
-				user.setuserName(userName);		// Calling the setter to assign String userName to user
+//				user.setuserEmail(userEmail);	// Calling the setter to assign String userEmail to user
+//				user.setuserPassword(userPassword);	// Calling the setter to assign String userPassword to user
+//				user.setuserName(userName);		// Calling the setter to assign String userName to user
+				
 				
 //				User user1 = new User (userEmail, userPassword, userName);	// All tests
 //				User user2 = new User (userEmail, userPassword, userName);	// All tests
@@ -66,7 +69,7 @@ public class UserService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+			System.out.println(listOfUser);
 		}
 		return null;	// The method isn't void so it must return something. In this case its returning null
 
