@@ -24,7 +24,7 @@ public class App {
 			System.out.println("Enter your password:");
 			String password = scanner.nextLine();
 
-			System.out.println(email + " " + password); // This needs changed
+			System.out.println("Invalid login, please try again");
 
 			if (attemptsRemaining == 0) {
 				scanner.close();
