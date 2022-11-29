@@ -3,17 +3,15 @@ package com.coderscampus.myapp.main;
 public class App {
 
 	public static void main(String[] args) {
-		new App().execute(); // Moving out of Static methods
+		new App().execute();
 
 	}
 
 	private void execute() {
 		
 		
-		UserService userService = new UserService(); // Instantiating UserService
-		userService.parseText(); // Running the method parseText in UserService
-		// User input block with my test to make sure it worked
-		// Now a while look with 5 login attempts and user input
+		UserService userService = new UserService();
+		userService.parseText();
 		
 }
 }
