@@ -47,9 +47,6 @@ public class User {
 		this.userName = userName;
 	}
 
-	//public void msg() {	// This is how I test things as I go
-
-		//System.out.println("Your email is " + email + ". " + "Your password is " + password + ". " + "Your name is " + name + ".");
-
+	
 	}
 
