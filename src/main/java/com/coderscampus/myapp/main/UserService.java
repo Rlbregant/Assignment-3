@@ -18,17 +18,11 @@ public class UserService {
 		try {
 			buff = new BufferedReader(new FileReader("data.txt"));
 		} catch (FileNotFoundException e) {
-			
 			e.printStackTrace();
-		}
-		try { // Try block which comes before a catch block for possible errors
-			
-
+		} 
+		try { 
 			while (buff != null) { // a while loop that stops when BufferedReader hits an empty line.
-
 				String line;
-				
-				
 					for (int i = 0; i > 3; i++) {
 						line = buff.readLine();
 						String[] array = line.split(","); // Splitting the line by the commas to give 0 - 2 Array slots
@@ -38,7 +32,6 @@ public class UserService {
 						User user = new User(userEmail, userPassword, userName);
 						listOfUser.add(user);
 					}
-				
 					while (attemptsRemaining > 0) {
 						attemptsRemaining--;
 						System.out.println("Enter your email:");
@@ -46,51 +39,28 @@ public class UserService {
 						System.out.println("Enter your password:");
 						String password = scanner.nextLine();
 
-						if (user.getuserEmail().equalsIgnoreCase(email)
-								&& user.getuserPassword().equals(password)) {
+					if (user.getuserEmail().equalsIgnoreCase(email)
+						&& user.getuserPassword().equals(password)) 
 							System.out.println("Welcome " + user.getuserName());
 						
 				
-						else {
-							if (attemptsRemaining == 0) {
-								scanner.close();
-								System.out.println("Too many failed login attempts, you are now locked out.");
-								break;
-						} else 
+					else {
+						if (attemptsRemaining == 0) {
+							scanner.close();
+							System.out.println("Too many failed login attempts, you are now locked out.");
+							
+						 } else 
 							System.out.println("Invalid login, please try again");
-						
 						}
-
 					}
 					scanner.close();
-
-				 
-				 // Reads a line of text and saves it as variable line
-//				listOfStrings.add(line);		// Puts line in ArrayList called listOfStrings
 					}
 			}
-					 catch (Exception e) {
+				    catch (Exception e) {
 						System.out.println("Error - " + e.toString());
-					} finally {
+				  } finally {
 						buff.close();
 						System.out.println(listOfUser);
 					}
-			
-					 
-		 
-			// It's the thing that runs after the loop finishes
-						
-		
-		
-//		} catch (IOException e) { // The Catch block to not have runtime errors and disrupt the program
-//			System.out.println("Error - " + e.toString());
-//		} catch (NullPointerException a) {
-//			System.out.println("Error - " + a.toString());
-//		} 
-
-		
-		
-	
-	
+			}
 	}
-}
