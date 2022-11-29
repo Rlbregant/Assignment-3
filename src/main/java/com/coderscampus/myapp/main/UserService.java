@@ -21,46 +21,67 @@ public class UserService {
 			e.printStackTrace();
 		} 
 		try { 
-			while (buff != null) { // a while loop that stops when BufferedReader hits an empty line.
-				String line;
-					for (int i = 0; i > 3; i++) {
-						line = buff.readLine();
+			String line;
+			line = buff.readLine();
+			while (line != null) { // a while loop that stops when BufferedReader hits an empty line.
+				
+				User user1 = null;
+					 {						
 						String[] array = line.split(","); // Splitting the line by the commas to give 0 - 2 Array slots
 						String userEmail = (array[0]); // Assigning ListOfStrings [0] as userEmail
 						String userPassword = (array[1]); // Assigning ListOfStrings [1] as userPassword
 						String userName = (array[2]); // Assigning ListOfStrings [2] as userName
-						User user = new User(userEmail, userPassword, userName);
-						listOfUser.add(user);
+						user1 = new User(userEmail, userPassword, userName);
+						listOfUser.add(user1);
+						line = buff.readLine();
+						
 					}
+			}
 					while (attemptsRemaining > 0) {
 						attemptsRemaining--;
 						System.out.println("Enter your email:");
 						String email = scanner.nextLine();
 						System.out.println("Enter your password:");
 						String password = scanner.nextLine();
-
-					if (user.getuserEmail().equalsIgnoreCase(email)
-						&& user.getuserPassword().equals(password)) 
-							System.out.println("Welcome " + user.getuserName());
-						
+						boolean foundUser = false;
+						String foundName = null;
+					for (User listOfUser1 : listOfUser) {
+						if  (listOfUser1.getuserEmail().equalsIgnoreCase(email)
+								&& listOfUser1.getuserPassword().equals(password)) 
+						{
+						foundUser = true;
+						foundName = listOfUser1.getuserName();
+						}
+					} if (foundUser) {
+					System.out.println("Welcome " + foundName);
+					break;
+					}
 				
 					else {
 						if (attemptsRemaining == 0) {
-							scanner.close();
 							System.out.println("Too many failed login attempts, you are now locked out.");
 							
 						 } else 
 							System.out.println("Invalid login, please try again");
+						
+							
 						}
 					}
 					scanner.close();
-					}
+					
 			}
 				    catch (Exception e) {
 						System.out.println("Error - " + e.toString());
+						e.printStackTrace();
 				  } finally {
-						buff.close();
-						System.out.println(listOfUser);
+						try {
+							buff.close();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
 					}
+		return null;
 			}
 	}
