@@ -11,13 +11,12 @@ public class App {
 	}
 
 	private void execute() {
-
+		
+		
 		UserService userService = new UserService(); // Instantiating UserService
 		userService.parseText(); // Running the method parseText in UserService
 		// User input block with my test to make sure it worked
 		// Now a while look with 5 login attempts and user input
 		
-		
-
-	}
+}
 }
